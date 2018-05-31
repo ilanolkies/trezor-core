@@ -2,6 +2,7 @@ from trezor.messages import wire_types
 from micropython import const
 
 # source: https://github.com/stellar/go/blob/master/xdr/Stellar-transaction.x
+# Inflation not supported see https://github.com/trezor/trezor-core/issues/202#issuecomment-393342089
 op_codes = {
     'StellarAccountMergeOp': const(8),
     'StellarAllowTrustOp': const(7),
@@ -30,8 +31,9 @@ op_wire_types = [
     wire_types.StellarSetOptionsOp,
 ]
 
-ASSET_TYPE_CREDIT_ALPHANUM4 = const(1)
-ASSET_TYPE_CREDIT_ALPHANUM12 = const(2)
+ASSET_TYPE_NATIVE = const(0)
+ASSET_TYPE_ALPHANUM4 = const(1)
+ASSET_TYPE_ALPHANUM12 = const(2)
 
 # https://www.stellar.org/developers/guides/concepts/accounts.html#balance
 # https://github.com/stellar/go/blob/master/amount/main.go
